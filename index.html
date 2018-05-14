@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <!-- Site Properties -->
-    <title>E - Portofolio</title>
+    <title>E - Portfolio</title>
     <link rel="stylesheet" type="text/css" href="css/components/reset.css">
     <link rel="stylesheet" type="text/css" href="css/components/site.css">
 
@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="css/components/icon.css">
     <link rel="stylesheet" type="text/css" href="css/components/sidebar.css">
     <link rel="stylesheet" type="text/css" href="css/components/transition.css">
+    <link rel="stylesheet" type="text/css" href="css/components/card.css">
 
     <style type="text/css">
         .hidden.menu {
@@ -157,7 +158,7 @@
         function navScrollTo(id) {
             console.log(id);
             $('html, body').animate({
-                scrollTop: $(id).offset().top
+                scrollTop: $(id).offset().top - 50
             }, 500);
         }
     </script>
@@ -169,28 +170,28 @@
     <div class="ui inverted large top fixed hidden menu">
         <div class="ui container">
             <a class="item" onclick="navScrollTo('#home')">Home</a>
-            <a class="item">Over Mezelf</a>
-            <a class="item">Competenties</a>
-            <a class="item">Projecten</a>
-            <a class="item">CV</a>
-            <a class="item">Contact</a>
+            <a class="item" onclick="navScrollTo('#overmezelf')">Over Mezelf</a>
+            <a class="item" onclick="navScrollTo('#competenties')">Competenties</a>
+            <a class="item" onclick="navScrollTo('#projecten')">Projecten</a>
+            <a class="item" onclick="navScrollTo('#cv')">CV</a>
+            <a class="item" onclick="navScrollTo('#contact')">Contact</a>
         </div>
     </div>
 
     <!-- Sidebar Menu -->
     <div class="ui vertical inverted sidebar menu">
         <a class="item" onclick="navScrollTo('#home')">Home</a>
-        <a class="item">Over Mezelf</a>
-        <a class="item">Competenties</a>
-        <a class="item">Projecten</a>
-        <a class="item">CV</a>
-        <a class="item">Contact</a>
+        <a class="item" onclick="navScrollTo('#overmezelf')">Over Mezelf</a>
+        <a class="item" onclick="navScrollTo('#competenties')">Competenties</a>
+        <a class="item" onclick="navScrollTo('#projecten')">Projecten</a>
+        <a class="item" onclick="navScrollTo('#cv')">CV</a>
+        <a class="item" onclick="navScrollTo('#contact')">Contact</a>
     </div>
 
 
     <!-- Page Contents -->
     <div class="pusher">
-        <div class="ui inverted vertical masthead center aligned segment">
+        <div id="home" class="ui inverted vertical masthead center aligned segment">
 
             <div class="ui container">
                 <div class="ui large secondary inverted pointing menu">
@@ -198,37 +199,60 @@
                         <i class="sidebar icon"></i>
                     </a>
                     <a class="item" onclick="navScrollTo('#home')">Home</a>
-                    <a class="item">Over Mezelf</a>
-                    <a class="item">Competenties</a>
-                    <a class="item">Projecten</a>
-                    <a class="item">CV</a>
-                    <a class="item">Contact</a>
+                    <a class="item" onclick="navScrollTo('#overmezelf')">Over Mezelf</a>
+                    <a class="item" onclick="navScrollTo('#competenties')">Competenties</a>
+                    <a class="item" onclick="navScrollTo('#projecten')">Projecten</a>
+                    <a class="item" onclick="navScrollTo('#cv')">CV</a>
+                    <a class="item" onclick="navScrollTo('#contact')">Contact</a>
                 </div>
             </div>
 
             <div class="ui text container">
-                <h1 class="ui inverted header">
-        E - Portofolio
-      </h1>
-                <h2>Nog veel in te vullen! :D</h2>
-                <div class="ui huge primary button">Doet nog niets <i class="right arrow icon"></i></div>
+                <h1 class="ui inverted header">E - Portfolio</h1>
+                <h2>Welkom bezoeker op de e-portfolio van Robbe Decraemer. <br>Op deze website kan u mij leren kennen en ook wat ik kan voor u betekenen. Om direct naar mijn contactgegevens te gaan, klik op onderstaande knop.</h2>
+                <div onclick="navScrollTo('#contact')" class="ui huge primary button">Contact <i class="right arrow icon"></i></div>
             </div>
 
         </div>
 
-        <div id="home" class="ui vertical stripe segment">
+        <div class="ui vertical stripe segment">
             <div class="ui middle aligned stackable grid container">
-                <div class="row">
-                    <div class="eight wide column">
-                        <h3 class="ui header">Over Mezelf</h3>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae voluptatem voluptates sit, animi at nam! Voluptate, obcaecati, voluptas. Repudiandae deleniti officia ab dolor sit blanditiis et recusandae quo? Consequatur, vitae?
-                        <h3 class="ui header">Competenties</h3>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur non quibusdam ratione aut commodi totam, pariatur veritatis nihil, dolores obcaecati perspiciatis excepturi! Animi officia, nam odit, similique minus totam reiciendis!
-                    </div>
-                    <div class="six wide right floated column">
-                        <img src="assets/images/wireframe/white-image.png" class="ui large bordered rounded image">
+                <div class="six wide column">
+                    <h3 id="overmezelf" class="ui header">Over Mezelf</h3>
+                    <div class="ui card">
+                        <div class="image">
+                            <img>
+                        </div>
+                        <div class="content">
+                            <p class="header">Robbe Decraemer</p>
+                            <div class="meta">
+                                <span class="date">Geboren op 07/08/1998</span>
+                            </div>
+                            <div class="description">
+                                Student toegepaste informatica aan de <a href="https://www.ucll.be/">University College Leuven Limburg (UCLL)</a>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <a>
+                                <i class="user icon"></i>
+                                Software ontwikkelaar
+                            </a>
+                        </div>
                     </div>
                 </div>
+                <div class="ten wide column">
+                    <p>Ik ben Robbe Decraemer, student toegepaste informatica aan de UCLL
+                    waarin ik specialiseer in softwareontwikkeling.
+                    Daarnaast doe ik ook nog aan muziek als melodische slagwerker in 2 harmonies en soms als hulp voor andere. 
+                    Mijn vrije tijd besteed ik aan gaming, game developing en
+                    mezelf de laatste technologien bijleren in allerlei programmeertalen.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui vertical stripe segment">
+            <div class="ui container">
+                <h3 id="competenties" class="ui header">Competenties</h3> 
             </div>
         </div>
 
@@ -237,24 +261,50 @@
             <div class="ui equal width stackable internally celled grid">
                 <div class="center aligned row">
                     <div class="column">
-                        <h3>Projecten</h3>
+                        <h3 id="projecten">Projecten</h3>
                         <p><a href="http://www.kytharos.com">Kytharos Game Project</a></p>
-                        <p>
-                            <a href="https://vacatures.oost-vlaanderen.be/">Oost Vlaanderen Vacature Website</a></p>
+                        <p><a href="https://vacatures.oost-vlaanderen.be/">Oost Vlaanderen Vacature Website</a></p>
                     </div>
                     <div class="column">
-                        <h3>CV</h3>
+                        <h3 id="cv">Curriculum Vitae</h3>
                         <a href="https://www.dropbox.com/s/t57bqct8iij1al1/CV%20Robbe%20Decraemer.pdf?dl=0" class="ui primary button">Download</a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="ui vertical stripe segment">
-            <div class="ui text container">
+        <div id="contact" class="ui vertical stripe segment">
+            <div class="ui container">
                 <h3 class="ui header">Contact</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, molestias! Amet officia maxime perspiciatis expedita, asperiores fugiat consequuntur rerum, ipsa laudantium quidem autem aut inventore quam sapiente deleniti odio reprehenderit.</p>
-                <a class="ui large button">More</a>
+                <div class="ui large very relaxed list">
+                    <div class="item">
+                        <i class="users icon"></i>
+                        <div class="content">
+                            Robbe Decraemer
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="marker icon"></i>
+                        <div class="content">
+                            3150 Tildonk
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="mail icon"></i>
+                        <div class="content">
+                            <a href="mailto:robbedecraemer@hotmail.com">robbedecraemer@hotmail.com</a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <i class="linkify icon"></i>
+                        <div class="content">
+                            <a href="https://www.linkedin.com/in/robbe-decraemer" class="ui linkedin button">
+                                <i class="linkedin icon"></i>
+                                Robbe Decraemer
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
