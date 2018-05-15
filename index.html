@@ -27,79 +27,81 @@
     <link rel="stylesheet" type="text/css" href="css/components/sidebar.css">
     <link rel="stylesheet" type="text/css" href="css/components/transition.css">
     <link rel="stylesheet" type="text/css" href="css/components/card.css">
+    <link rel="stylesheet" type="text/css" href="css/components/table.css">
+    <link rel="stylesheet" type="text/css" href="css/components/tab.css">
 
     <style type="text/css">
         .hidden.menu {
             display: none;
         }
-        
+
         .masthead.segment {
             min-height: 700px;
             padding: 1em 0em;
         }
-        
+
         .masthead .logo.item img {
             margin-right: 1em;
         }
-        
+
         .masthead .ui.menu .ui.button {
             margin-left: 0.5em;
         }
-        
+
         .masthead h1.ui.header {
             margin-top: 3em;
             margin-bottom: 0em;
             font-size: 4em;
             font-weight: normal;
         }
-        
+
         .masthead h2 {
             font-size: 1.7em;
             font-weight: normal;
         }
-        
+
         .ui.vertical.stripe {
             padding: 8em 0em;
         }
-        
+
         .ui.vertical.stripe h3 {
             font-size: 2em;
         }
-        
-        .ui.vertical.stripe .button + h3,
-        .ui.vertical.stripe p + h3 {
+
+        .ui.vertical.stripe .button+h3,
+        .ui.vertical.stripe p+h3 {
             margin-top: 3em;
         }
-        
+
         .ui.vertical.stripe .floated.image {
             clear: both;
         }
-        
+
         .ui.vertical.stripe p {
             font-size: 1.33em;
         }
-        
+
         .ui.vertical.stripe .horizontal.divider {
             margin: 3em 0em;
         }
-        
+
         .quote.stripe.segment {
             padding: 0em;
         }
-        
+
         .quote.stripe.segment .grid .column {
             padding-top: 5em;
             padding-bottom: 5em;
         }
-        
+
         .footer.segment {
             padding: 5em 0em;
         }
-        
+
         .secondary.pointing.menu .toc.item {
             display: none;
         }
-        
+
         @media only screen and (max-width: 700px) {
             .ui.fixed.menu {
                 display: none !important;
@@ -123,40 +125,35 @@
                 font-size: 1.5em;
             }
         }
-
     </style>
 
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="css/components/visibility.js"></script>
     <script src="css/components/sidebar.js"></script>
     <script src="css/components/transition.js"></script>
+    <script src="css/components/tab.js"></script>
+
     <script>
-        $(document)
-            .ready(function() {
+        $(document).ready(function () {
 
-                // fix menu when passed
-                $('.masthead')
-                    .visibility({
-                        once: false,
-                        onBottomPassed: function() {
-                            $('.fixed.menu').transition('fade in');
-                        },
-                        onBottomPassedReverse: function() {
-                            $('.fixed.menu').transition('fade out');
-                        }
-                    });
-
-                // create sidebar and attach to menu open
-                $('.ui.sidebar')
-                    .sidebar('attach events', '.toc.item');
-            
-                
-
+            // fix menu when passed
+            $('.masthead').visibility({
+                once: false,
+                onBottomPassed: function () {
+                    $('.fixed.menu').transition('fade in');
+                },
+                onBottomPassedReverse: function () {
+                    $('.fixed.menu').transition('fade out');
+                }
             });
-    </script>
-    <script>
+
+            // create sidebar and attach to menu open
+            $('.ui.sidebar').sidebar('attach events', '.toc.item');
+            $('.tabular.menu .item').tab();
+
+        });
+
         function navScrollTo(id) {
-            console.log(id);
             $('html, body').animate({
                 scrollTop: $(id).offset().top - 50
             }, 500);
@@ -209,50 +206,449 @@
 
             <div class="ui text container">
                 <h1 class="ui inverted header">E - Portfolio</h1>
-                <h2>Welkom bezoeker op de e-portfolio van Robbe Decraemer. <br>Op deze website kan u mij leren kennen en ook wat ik kan voor u betekenen. Om direct naar mijn contactgegevens te gaan, klik op onderstaande knop.</h2>
-                <div onclick="navScrollTo('#contact')" class="ui huge primary button">Contact <i class="right arrow icon"></i></div>
+                <h2>Welkom bezoeker op de e-portfolio van Robbe Decraemer.
+                    <br>Op deze website kan u mij leren kennen en ook wat ik kan voor u betekenen. Om direct naar mijn contactgegevens
+                    te gaan, klik op onderstaande knop.</h2>
+                <div onclick="navScrollTo('#contact')" class="ui huge primary button">Contact
+                    <i class="right arrow icon"></i>
+                </div>
             </div>
 
         </div>
 
         <div class="ui vertical stripe segment">
             <div class="ui middle aligned stackable grid container">
-                <div class="six wide column">
-                    <h3 id="overmezelf" class="ui header">Over Mezelf</h3>
-                    <div class="ui card">
-                        <div class="image">
-                            <img>
-                        </div>
-                        <div class="content">
-                            <p class="header">Robbe Decraemer</p>
-                            <div class="meta">
-                                <span class="date">Geboren op 07/08/1998</span>
+                <h3 id="overmezelf" class="ui header">Over Mezelf</h3>
+                <div class="ui row">
+                    <div class="ten wide column">
+                        <p>Ik ben Robbe Decraemer, student toegepaste informatica aan de UCLL waarin ik specialiseer in softwareontwikkeling.
+                            Daarnaast doe ik ook nog aan muziek als melodische slagwerker in 2 harmonies en soms als hulp
+                            voor andere. Mijn vrije tijd besteed ik aan gaming, game developing en mezelf de laatste technologien
+                            bijleren in allerlei programmeertalen.</p>
+                    </div>
+                    <div class="six wide column">
+                        <div class="ui fluid card">
+                            <div class="image">
+                                <img>
                             </div>
-                            <div class="description">
-                                Student toegepaste informatica aan de <a href="https://www.ucll.be/">University College Leuven Limburg (UCLL)</a>
+                            <div class="content">
+                                <p class="header">Robbe Decraemer</p>
+                                <div class="meta">
+                                    <span class="date">Geboren op 07/08/1998</span>
+                                </div>
+                                <div class="description">
+                                    Student toegepaste informatica aan de
+                                    <a href="https://www.ucll.be/">University College Leuven Limburg (UCLL)</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="extra content">
-                            <a>
-                                <i class="user icon"></i>
-                                Software ontwikkelaar
-                            </a>
+                            <div class="extra content">
+                                <a>
+                                    <i class="user icon"></i>
+                                    Software ontwikkelaar
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="ten wide column">
-                    <p>Ik ben Robbe Decraemer, student toegepaste informatica aan de UCLL
-                    waarin ik specialiseer in softwareontwikkeling.
-                    Daarnaast doe ik ook nog aan muziek als melodische slagwerker in 2 harmonies en soms als hulp voor andere. 
-                    Mijn vrije tijd besteed ik aan gaming, game developing en
-                    mezelf de laatste technologien bijleren in allerlei programmeertalen.</p>
                 </div>
             </div>
         </div>
 
         <div class="ui vertical stripe segment">
             <div class="ui container">
-                <h3 id="competenties" class="ui header">Competenties</h3> 
+                <h3 id="competenties" class="ui header">Competenties</h3>
+                <div class="ui grid">
+                    <div class="four wide column">
+                        <div class="ui vertical fluid tabular menu">
+                            <a class="active item" data-tab="1">Gegevens behandelen</a>
+                            <a class="item" data-tab="2">Analyseren</a>
+                            <a class="item" data-tab="3">Oplossingen uitwerken</a>
+                            <a class="item" data-tab="4">Beheren</a>
+                            <a class="item" data-tab="5">Projectmatig werken</a>
+                            <a class="item" data-tab="6">Communiceren</a>
+                            <a class="item" data-tab="7">Eigen gedrag aanpassen</a>
+                            <a class="item" data-tab="8">Kwaliteitsvol handelen</a>
+                        </div>
+                    </div>
+                    <div class="twelve wide stretched column">
+                        <div class="ui tab" data-tab="1">
+                            <table class="ui definition celled fixed table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Niveau 1</th>
+                                        <th>Niveau 2</th>
+                                        <th>Niveau 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Gegevens verzamelen</td>
+                                        <td>Gegevens verzamelen
+                                            <br>
+                                            <br>Verzamelde gegevens opsommen binnen een aangereikt referentiekader
+                                            <br>
+                                            <br>Zinvolle testgegevens verzamelen</td>
+                                        <td>Structuur aanbrengen in de gegevens</td>
+                                        <td class="positive">Verzamelde testgegevens structureren, in hoofd- en bijzaken onverscheiden en in een
+                                            relevant referentiekader positioneren</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gegevens modelleren</td>
+                                        <td class="positive">Gegevens modelleren volgens een aangereikt model</td>
+                                        <td>Gemodelleerde gegevens interpreteren
+                                            <br>
+                                            <br>Verschillende modellen vergelijken</td>
+                                        <td>Gegevens modelleren volgens een relevant model</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Verbanden leggen</td>
+                                        <td>Casuaal denken
+                                            <br>
+                                            <br>Notie hebben van de vereiste relaties</td>
+                                        <td>Vooropgestelde relaties kritisch interpreteren
+                                            <br>
+                                            <br>Vereiste relaties onder begeleiding aanbrengen</td>
+                                        <td class="positive">Vereiste relaties zelfstandig aanbrengen</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gegevens opslaan (uitzuiveren, converteren, stockeren)</td>
+                                        <td>Notie hebben van bestaande procedures om gegevens en veiligheidskopies op de slaan
+                                            <br>
+                                            <br>Notie hebben van procedures om gegevens uit te zuiveren
+                                            <br>
+                                            <br>Notie hebben van converteerprogramma's
+                                            <br>
+                                            <br>Gegevens opslaan in een aangereikt opslagmedium</td>
+                                        <td>Gegevens oplaan en veiligheidskopies maken volgens een aangereikte procedure
+                                            <br>
+                                            <br>Gegevens uitzuiveren / valideren volgend een aangereikte procedure gegevens converteren
+                                            en opslaan binnen eenzelfde opslag medium</td>
+                                        <td class="positive">Zelfstandig een relavante kopieerprocedure bepalen
+                                            <br>
+                                            <br>Toepassen van een efficiënte opslagprocedure
+                                            <br>
+                                            <br>Een validatiemethode bepalen en uitwerken voor een geïntegreerde toepassing Gegevens
+                                            converteren om over te brengen naar andere media</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gegevens ter beschikking stellen</td>
+                                        <td>Notie hebben van bestaande presentatievormen
+                                            <br>
+                                            <br>Onder begeleiding gegevens invoeren in een aangereikte presentatievorm</td>
+                                        <td class="positive">Bestaande presentatie vormen kennen
+                                            <br>
+                                            <br>Zelfstandig invoeren van gegevens in een aangereikte presentatievorm</td>
+                                        <td>Selecteren van een gepaste presentatievorm
+                                            <br>
+                                            <br>Zelfstandig invoeren van gegevens in een aangepaste presentatievorm</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ui tab" data-tab="2">
+                            <table class="ui definition celled fixed table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Niveau 1</th>
+                                        <th>Niveau 2</th>
+                                        <th>Niveau 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Informatie behoeften van een organisatie identificeren</td>
+                                        <td>Kennis hebben van de missie van een organisatie
+
+                                            <br>
+                                            <br>Informatie omtrent de missie van een organisatie verzamelen Verzamelde informatie
+                                            samenvatten
+
+                                            <br>
+                                            <br>Begrijpen van een probleem of opdracht Oorzaak)gevolg onderscheiden bij probleemdedectie</td>
+                                        <td>Onder begeleiding informatie omtrent de misie van een organisatie documenteren
+                                            <br>
+                                            <br>Herformuleren van een probleem of opdracht zodat de kern duidelijk wordt
+                                            <br>
+                                            <br>Onder begeleiding de kern van een probleem of opdracht duidelijk schetsen</td>
+                                        <td>Zelfstandig informatie omtrent de missie van een organisatie documenteren
+                                            <br>
+                                            <br>Zelfstandig de kern van een probleem of opdracht duidelijk schetsen</td>
+                                    </tr>
+                                    <tr>
+                                        <td>De informatiebehoeften van een organisatie vertalen in concepten, schema's en relaties</td>
+                                        <td>Noties hebben van bestaande methodieken om gegevens te structureren</td>
+                                        <td>Onder begeleiding gebruik maken van een methodiek om gegevens te structureren
+                                            <br>
+                                            <br>Onder begeleiding de meest relevante methodiek toepassen om gegevens te structureren
+                                            <br>
+                                            <br>Onder begeleiding verschillende modellen op elkaar afstemmen</td>
+                                        <td>Zelfstandig gebruik maken van een methodiek om gegevens te structureren
+                                            <br>
+                                            <br>Zelfstandig de meest relevante methodiek toepassen om gegevens te structureren
+                                            <br>
+                                            <br>Zelfstandig verschillende modellen op elkaar afstemmen</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mogelijke IT-oplossingen documenteren / formuleren</td>
+                                        <td>Mogelijke oplossingen van gelijkaardige, bestaande problemen verzamelen</td>
+                                        <td>Bruikbare oplossingen opsommen
+                                            <br>
+                                            <br>Onder begeleiding pro's en contra's an de bruikbare oplossingen opsommen
+                                            <br>
+                                            <br>Onder begeleiding noodzaak van nieuwe oplossingen omschrijven</td>
+                                        <td>Zelfstandig pro's en contra's van de bruikbare oplossingen opsommen
+                                            <br>
+                                            <br>Zelfstandig noodzaak van nieuwe oplossingen omschrijven</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mogelijke IT-oplossingen evalueren</td>
+                                        <td>Notie hebben van de beschikbare criteria</td>
+                                        <td>Onder begeleiding bruikbare oplossingen aftoetsen met behulp van beschikbare criteria</td>
+                                        <td>Zelfstandig bruikbare oplossingen aftoesten met behulp van beschikbare criteria</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Testprocedures opstellen voor nieuwe IT-oplossingen</td>
+                                        <td>Betrokken partijen identificeren
+                                            <br>
+                                            <br>Domein voor elk van de partijen afbakenen</td>
+                                        <td>Onder begeleiding voor elk van de partijen mogelijke concrete werkwijzen vastleggen</td>
+                                        <td>Zelfstandig voor elk van de partijen mogelijke,concrete werkwijzen vastleggen</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ui tab" data-tab="3">
+                            <table class="ui definition celled fixed table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Niveau 1</th>
+                                        <th>Niveau 2</th>
+                                        <th>Niveau 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Nieuwe It-oplossingen programmeren(gestructureerd,object georiënteerd, gedistribueerd)</td>
+                                        <td>Notie hebben van bestaande
+                                            <br>
+                                            <br>Basisalgoritmes gebruiken in gekende situaties
+                                            <br>
+                                            <br>Alternatieven afwegen
+                                            <br>
+                                            <br>Mogelijke eenvoudige oplossingen uitwerken
+                                            <br>
+                                            <br>Localiseren van fouten (bugs)</td>
+                                        <td>Controleren of verschillende oplossingen aan de vereiste specificaties voldoen
+                                            <br>
+                                            <br>Meest relevante oplossing kiezen
+                                            <br>
+                                            <br>Onder begeleiding complexe algoritmes toepassen
+                                            <br>
+                                            <br>Oplossingen genereren voor fouten (bugs)</td>
+                                        <td>Zelfstandig complexe algoritmes toepassen
+                                            <br>
+                                            <br>Complexe oplossingen uitwerken</td>
+                                    </tr>
+                                    <tr>
+                                        <td>nieuwe IT-oplossingen implementeren</td>
+                                        <td>In kaart brengen van systeemomgeving (HW &amp; SW)</td>
+                                        <td>Een gepaste omgeving kiezen
+                                            <br>
+                                            <br>Een implementatieplan opstellen
+                                            <br>
+                                            <br>Betrekken van gebruikers in het implementatieplan</td>
+                                        <td>In gebruik stellen van de nieuwe applicatie
+                                            <br>
+                                            <br>Opleiden van de gebruiker in de applicatie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nieuwe IT-oplossingen documenteren</td>
+                                        <td>Correct gedachten verwoorden</td>
+                                        <td>Gebruiken van hulpmiddelen voor de documentatie
+                                            <br>
+                                            <br>Toevoegen van commentaarlijnen aan programma's</td>
+                                        <td>Een handleiding schrijven voor een nieuwe applicatie</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nieuwe IT-oplossingen testen (op het niveau van de deelaspecten en van de integratie)</td>
+                                        <td>Valideren van de deelaspecten</td>
+                                        <td>Valideren van de integratie</td>
+                                        <td>Controleren van de werking van de applicatie in verschillende situaties
+                                            <br>
+                                            <br>Controleren van de werking van de applicatie in verschillende omgevingen</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ui tab" data-tab="4">
+                            <table class="ui definition celled fixed table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Niveau 1</th>
+                                        <th>Niveau 2</th>
+                                        <th>Niveau 3</th>
+                                        <th>Niveau 4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>IT-oplossingen (systemen,toepassingen,databanken) configureren, beveiligen en aanpassen</td>
+                                        <td>Basisconfiguratie begrijpen
+                                            <br>
+                                            <br>Basisfunctionaliteit testen
+                                            <br>
+                                            <br>Beveiligings-procedures opvolgen
+                                            <br>
+                                            <br>IT-oplossingen opzetten a.d.h.v. gedetailleerde procedures</td>
+                                        <td class="positive">IT-oplossingen opzetten a.d.h.v. standaard-documentatie
+                                            <br>
+                                            <br>Configuratie aanpassen
+                                            <br>
+                                            <br>IT-oplossingen monitoren en beveiliging bewaken
+                                            <br>
+                                            <br>IT-oplossingen uitgebreid testen
+                                            <br>
+                                            <br>IT-oplossingen uitgebreid vergelijken</td>
+                                        <td>Zelfstandig IT-oplossingen opzetten rekening houdend met de randvoorwaarden
+                                            <br>
+                                            <br>IT-oplossingen optimaliseren
+                                            <br>
+                                            <br>Compatibele IT-oplossingen integreren
+                                            <br>
+                                            <br>Risico-analyse uitvoeren
+                                            <br>
+                                            <br>Gemotiveerd kiezen tussen alternatieve IT-oplossingen</td>
+                                        <td>Volledig geïntegreerde omgeving creëren</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ui tab" data-tab="5">
+                            <table class="ui definition celled fixed table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Niveau 1</th>
+                                        <th>Niveau 2</th>
+                                        <th>Niveau 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ui tab" data-tab="6">
+                            <table class="ui definition celled fixed table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Niveau 1</th>
+                                        <th>Niveau 2</th>
+                                        <th>Niveau 3</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ui tab" data-tab="7">
+                            <table class="ui definition celled fixed table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Niveau 1</th>
+                                        <th>Niveau 2</th>
+                                        <th>Niveau 3</th>
+                                        <th>Niveau 4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="ui tab" data-tab="8">
+                            <table class="ui definition celled fixed table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Niveau 1</th>
+                                        <th>Niveau 2</th>
+                                        <th>Niveau 3</th>
+                                        <th>Niveau 4</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -261,53 +657,76 @@
             <div class="ui equal width stackable internally celled grid">
                 <div class="center aligned row">
                     <div class="column">
-                        <h3 id="projecten">Projecten</h3>
-                        <p><a href="http://www.kytharos.com">Kytharos Game Project</a></p>
-                        <p><a href="https://vacatures.oost-vlaanderen.be/">Oost Vlaanderen Vacature Website</a></p>
+                        <h3 id="projecten">Afgeloped Projecten</h3>
+                        <p>
+                            <a href="https://vacatures.oost-vlaanderen.be/">Oost Vlaanderen Vacature Website</a>
+                        </p>
                     </div>
                     <div class="column">
+                        <h3>Lopende Projecten</h3>
+                        <p>
+                            <a href="http://www.kytharos.com">Kytharos Game Project</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui vertical stripe segment">
+            <div class="ui stackable grid">
+                <div class="center aligned row">
+                    <div class="three wide column"></div>
+
+                    <div class="five wide column">
+                        <div id="contact" class="contact">
+                            <h3 class="ui header">Contact</h3>
+                            <div class="ui grid">
+                                <div class="five wide column"></div>
+                                <div class="ten wide column">
+                                    <div class="ui large very relaxed list">
+                                        <div class="item">
+                                            <i class="users icon"></i>
+                                            <div class="content">
+                                                Robbe Decraemer
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <i class="marker icon"></i>
+                                            <div class="content">
+                                                3150 Tildonk
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <i class="mail icon"></i>
+                                            <div class="content">
+                                                <a href="mailto:robbedecraemer@hotmail.com">robbedecraemer@hotmail.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <i class="linkify icon"></i>
+                                            <div class="content">
+                                                <a href="https://www.linkedin.com/in/robbe-decraemer" class="ui linkedin button">
+                                                    <i class="linkedin icon"></i>
+                                                    Robbe Decraemer
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="five wide column">
+                        <br>
                         <h3 id="cv">Curriculum Vitae</h3>
                         <a href="https://www.dropbox.com/s/t57bqct8iij1al1/CV%20Robbe%20Decraemer.pdf?dl=0" class="ui primary button">Download</a>
                     </div>
+
+                    <div class="three wide column"></div>
                 </div>
             </div>
         </div>
-
-        <div id="contact" class="ui vertical stripe segment">
-            <div class="ui container">
-                <h3 class="ui header">Contact</h3>
-                <div class="ui large very relaxed list">
-                    <div class="item">
-                        <i class="users icon"></i>
-                        <div class="content">
-                            Robbe Decraemer
-                        </div>
-                    </div>
-                    <div class="item">
-                        <i class="marker icon"></i>
-                        <div class="content">
-                            3150 Tildonk
-                        </div>
-                    </div>
-                    <div class="item">
-                        <i class="mail icon"></i>
-                        <div class="content">
-                            <a href="mailto:robbedecraemer@hotmail.com">robbedecraemer@hotmail.com</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <i class="linkify icon"></i>
-                        <div class="content">
-                            <a href="https://www.linkedin.com/in/robbe-decraemer" class="ui linkedin button">
-                                <i class="linkedin icon"></i>
-                                Robbe Decraemer
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <div class="ui inverted vertical footer segment">
             <div class="ui container">
